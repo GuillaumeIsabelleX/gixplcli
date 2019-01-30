@@ -1,0 +1,22 @@
+{
+  "name": "gixplcli",
+  "version": "0.0.1",
+  "description": "Simple PatternLab pattern creator from command line",
+  "main": "gixplcli.js",
+  "scripts": {
+    "test": "node tests/test.gixdeko.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GuillaumeIsabelleX/gixplcli.git"
+  },
+  "keywords": [
+    "gix",
+    "patternlab"
+  ],
+  "author": "J. Guillaume Isabelle",
+  "license": "MIT",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
+}
