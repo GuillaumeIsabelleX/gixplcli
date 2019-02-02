@@ -1,5 +1,5 @@
 
-## [0.1.0 (2019-02-12)
+## [0.2.0 (2019-02-12)
 ### planned
 * Added --model NOT YET SUPPORTED
 * Added --lang (js|php|...) default js NOT YET SUPPORTED
@@ -7,7 +7,7 @@
  
 
 
-## [0.0.8] (2019-02-12)
+## [0.1.0] (2019-02-12)
 ### planned
 * Deko before Goal/Action/CR packConf.gixplcli.stc.deko.goal.prefix
 * --nostc
