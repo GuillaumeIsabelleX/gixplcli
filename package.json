@@ -4,8 +4,12 @@
   "description": "Simple PatternLab pattern creator from a command line you run at the root of your pattern package",
   "main": "gixplcli.js",
   "scripts": {
-    "test": "node gixplcli.js -n atoms-mytext -t mytitle -d \"My description\" --goal \"My goal for the pattern to achieve\" --actions \"my first action\nmysecond action\" --id 90e09d47a1dc4edf8f373b05a2c10c87",
+    "testprep": "bash test_init.sh",
+    "test": "node gixplcli.js -n atoms-mytext -t mytitle -d \"My description\" --goal \"My goal for the pattern to achieve\" --actions \"my first action\nmysecond action\" --id 90e09d47a1dc4edf8f373b05a2c10c87;node gixplcli.js -n atoms-mytext-0f2ef2b7d861473d933020230c770471 -t mytitle -d \"My description if a pattern\" --goal \"My goal for the pattern to achieve\" --actions \"my first action\nmysecond action\" --innerhtml \"<div id=0f2ef2b7d861473d933020230c770471><h1>{{title}}</h1><p>specified html</p></div>\"",
     "testinnerhtml": "node gixplcli.js -n atoms-mytext-0f2ef2b7d861473d933020230c770471 -t mytitle -d \"My description if a pattern\" --goal \"My goal for the pattern to achieve\" --actions \"my first action\nmysecond action\" --innerhtml \"<div id=0f2ef2b7d861473d933020230c770471><h1>{{title}}</h1><p>specified html</p></div>\"",
+    "preversion": "npm test",
+    "version": "git add -A dist",
+    "postversion": "git push && git push --tags",
     "postinstall_disabled": "./postinstall.cmd"
   },
   "gixplcli": {
