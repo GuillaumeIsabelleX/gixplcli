@@ -463,10 +463,14 @@ function parseCommandLineArguments(args) {
 
 	r.ptype = "atoms";
 
-	r.cr = args.cr ? args.cr : "_CR_";
-	r.goal = args.goal ? args.goal : args.v ? args.v : "_GOAL_";
+	r.cr =
+		packConf.gixplcli.stc.deko.cr.prefix +
+		(args.cr ? args.cr : "_CR_");
+	r.goal =
+		packConf.gixplcli.stc.deko.goal.prefix + (
+			args.goal ? args.goal : args.v ? args.v : packConf.gixplcli.stc.deko.goal.defaultvalue);
 
-	r.model = args.model ? args.model : "default";
+	r.model = args.model ? args.model : packConf.gixplcli.models.default.modelname;
 
 	if (args.actions) {
 		//@v parse actions to create one line per using delimiter ; or \n
@@ -479,7 +483,7 @@ function parseCommandLineArguments(args) {
 		{//@s Yes
 			var actionResults = "";
 			actionsText.split(delimiter).forEach(action => {
-				actionResults += packConf.gixplcli.default.mdlineitem + action + "\n";
+				actionResults += packConf.gixplcli.stc.deko.a.prefix + action + "\n";
 			});
 
 			r.actions = actionResults;//@resolving a group of item for displaying
@@ -514,6 +518,10 @@ function parseCommandLineArguments(args) {
 	} catch (error) {
 
 	}
+
+
+
+	if (args.nostc) r.goal = "";//@result No Goal passed
 	return r;
 
 }
