@@ -1,10 +1,33 @@
 {
   "name": "gixplcli",
-  "version": "0.0.1",
-  "description": "Simple PatternLab pattern creator from command line",
+  "version": "0.0.6",
+  "description": "Simple PatternLab pattern creator from a command line you run at the root of your pattern package",
   "main": "gixplcli.js",
   "scripts": {
-    "test": "node tests/test.gixdeko.js"
+    "test": "node gixplcli.js -n atoms-mytext -t mytitle -d \"My description\" --goal \"My goal for the pattern to achieve\" --actions \"my first action\nmysecond action\" --id 90e09d47a1dc4edf8f373b05a2c10c87",
+    "testinnerhtml": "node gixplcli.js -n atoms-mytext-0f2ef2b7d861473d933020230c770471 -t mytitle -d \"My description if a pattern\" --goal \"My goal for the pattern to achieve\" --actions \"my first action\nmysecond action\" --innerhtml \"<div id=0f2ef2b7d861473d933020230c770471><h1>{{title}}</h1><p>specified html</p></div>\"",
+    "postinstall_disabled": "./postinstall.cmd"
+  },
+  "gixplcli": {
+    "models": {
+      "conf": {
+        "mdsuffix": "-md.mustache",
+        "mustachesuffix": "-mustache.mustache"
+      },
+      "default": {
+        "modelname": "default",
+        "title": "Default model",
+        "placeholders": {
+          "innerhtml": "<p>PLACEHOLDER {{name}}</p><p>{{description}}</p>"
+        }
+      }
+    },
+    "default": {
+      "md": "default-md.mustache",
+      "mustache": "default-mustache.mustache",
+      "state": "inprogress",
+      "mdlineitem": "* "
+    }
   },
   "repository": {
     "type": "git",
@@ -12,11 +35,17 @@
   },
   "keywords": [
     "gix",
-    "patternlab"
+    "patternlab",
+    "cli",
+    "automation"
   ],
   "author": "J. Guillaume Isabelle",
   "license": "MIT",
   "dependencies": {
-    "minimist": "^1.2.0"
+    "gulp": "^4.0.0",
+    "gulp-git": "^2.8.1",
+    "minimist": "^1.2.0",
+    "mustache": "^3.0.1",
+    "unescape": "^1.0.1"
   }
 }
