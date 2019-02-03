@@ -423,15 +423,17 @@ function readFile(fn) {
 function parseCommandLineArguments(args) {
 	var r = new Object();
 
+	r.ptype = "atoms";
 
 	var nameParamInfo = "--name or --n parsing failed - Make use you use like : --name atoms-mytext and not just your pattern name ";
 	try {
 
 		var _name = args.n ? args.n : args.name ? args.name : "";
 
-		var indexD = _name.indexOf("-");
+		var indexD = _name.indexOf('-');
 
-		if (debug) console.log(_name + indexD);
+		//if (debug)
+		console.log(_name + indexD);
 
 		//@validating ... atoms-, molecules- in name...
 		if (indexD == -1)
@@ -439,6 +441,8 @@ function parseCommandLineArguments(args) {
 
 		r.name = _name;
 		var tmp = _name.substring(0, indexD);
+
+		r.ptype = tmp;
 
 
 	} catch (err) {
@@ -461,7 +465,6 @@ function parseCommandLineArguments(args) {
 		r.state = args.state ? args.state : packConf.gixplcli.default.state;
 	if (r.state == true) r.state = packConf.gixplcli.default.state;
 
-	r.ptype = "atoms";
 
 	r.cr =
 		packConf.gixplcli.stc.deko.cr.prefix +
