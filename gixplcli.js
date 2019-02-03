@@ -439,9 +439,9 @@ function parseCommandLineArguments(args) {
 		if (indexD == -1)
 			throw nameParamInfo;
 
-		r.name = _name;
 		var tmp = _name.substring(0, indexD);
 
+		r.name = _name.replace(tmp + "-", "");
 		r.ptype = tmp;
 
 
