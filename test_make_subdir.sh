@@ -1,0 +1,1 @@
+mkdir source;mkdir source/_patterns;  mkdir source/_patterns/00-atoms;mkdir source/_patterns/01-molecules; mkdir source/_patterns/02-organisms;mkdir source/_patterns/03-templates;mkdir source/_patterns/04-page;
