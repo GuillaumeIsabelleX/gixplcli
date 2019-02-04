@@ -167,9 +167,9 @@ function serializingPattern(renderedContent, templatePatternModel) {
 
 
 
-			if (!args.quiet) {
+			if (debug) {
 				console.log("Serializing ");
-				if (debug) console.log(`Written:
+				console.log(`Writting:
 				\t ${templatePatternModel.fnmustache}
 				\t ${templatePatternModel.fnmd}	`
 				);
