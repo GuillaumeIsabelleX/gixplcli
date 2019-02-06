@@ -6,7 +6,13 @@
 
 //@mastery Bump version and publish npm
 var gulp = require('gulp'),
-	watch = require('gulp-watch');
+	watch = require('gulp-watch'),
+	bump = require('gulp-bump'),
+	filter = require('gulp-filter'),
+	git = require('gulp-git'),
+	shell = require('gulp-shell'),
+	tagversion = require('gulp-tag-version'),
+	tlid = require('tlid');
 
 gulp.task('stream', function () {
 	// Endless stream mode
@@ -30,3 +36,25 @@ gulp.task('default', () =>
 		.pipe(ngAnnotate())
 		.pipe(gulp.dest(DEST))
 );
+
+
+
+
+gulp.task('release', function () {
+	production = true;
+
+	return gulp.src("./")
+		.pipe(git.commit('Releasing ' + '-' + tlid.get()))
+
+		// read only one file to get version number
+		.pipe(filter('package.json'))
+		.pipe(bump())
+
+		// Tag it
+		.pipe(tagversion())
+
+		// Publish files and tags to endpoint
+		.pipe(shell([
+			'git push '
+		]));
+});

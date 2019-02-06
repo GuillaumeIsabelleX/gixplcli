@@ -351,6 +351,13 @@ function prepFileNames(r) {
 		case "pages":
 			prenum = "04";
 			break;
+		case "samples":
+			prenum = "05";
+			break
+			;
+		case "x":
+			prenum = "06";
+			break;
 
 
 		default:
@@ -431,7 +438,7 @@ function parseCommandLineArguments(args) {
 		var indexD = _name.indexOf('-');
 
 		//if (debug)
-		console.log(_name + indexD);
+		//console.log(_name + indexD);
 
 		//@validating ... atoms-, molecules- in name...
 		if (indexD == -1)
