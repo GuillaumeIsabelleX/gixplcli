@@ -39,7 +39,7 @@ gulp.task('default', () =>
 
 
 
-
+//@s use release-it command line
 gulp.task('release', function () {
 	production = true;
 
