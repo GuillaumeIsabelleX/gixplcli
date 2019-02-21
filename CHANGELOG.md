@@ -1,20 +1,15 @@
 
-## [0.2.0 (2019-02-12)
+## [0.2.0 (2019-03-12)
 ### planned
 * Added --model NOT YET SUPPORTED
 * Added --lang (js|php|...) default js NOT YET SUPPORTED
 * Added --scss
  
 
-## [0.1.10] (2019-02-21)
+## [0.1.11] (2019-02-21)
 ### changed
 * ADded --jsonvue to flag content of the json file as having a vue
 
-
-## [0.1.0] (2019-02-12)
-### planned
-* Deko before Goal/Action/CR packConf.gixplcli.stc.deko.goal.prefix
-* --nostc
 
 
 ## [0.0.6] (2019-02-02)
