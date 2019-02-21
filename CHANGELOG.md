@@ -6,6 +6,10 @@
 * Added --scss
  
 
+## [0.1.10] (2019-02-21)
+### changed
+* ADded --jsonvue to flag content of the json file as having a vue
+
 
 ## [0.1.0] (2019-02-12)
 ### planned

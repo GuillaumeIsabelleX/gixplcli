@@ -189,6 +189,20 @@ function serializingPattern(renderedContent, templatePatternModel) {
 				\t ${templatePatternModel.fnmustache}
 				\t ${templatePatternModel.fnmd}`
 						);
+
+
+					}
+
+					if (renderedContent.json) {
+						//@a Serialine a JSON File
+						//
+						fs.writeFile(templatePatternModel.fnjson, renderedContent.json, (err3) => {
+							if (err3)//@rejected ERRORWritting
+								rejecting(err3);
+							if (!args.quiet)
+								console.log(`\t ${templatePatternModel.fnjson}`);
+						});
+
 					}
 				});
 			});
@@ -264,6 +278,8 @@ function renderingPatternContent(templatePatternModel) {
 			console.log("templatePatternModel:");
 			console.log(templatePatternModel);
 		}
+
+		if (dataObject.json) result.json = dataObject.json;//@s Storing the JSON here so we might transform it later
 		resolving(result);
 	});
 }
@@ -358,7 +374,13 @@ function prepFileNames(r) {
 		case "x":
 			prenum = "06";
 			break;
+		case "tests":
+			prenum = "99";
+			break;
 
+		case "reports":
+			prenum = "66";
+			break;
 
 		default:
 			break;
@@ -370,10 +392,13 @@ function prepFileNames(r) {
 
 	var mdFNBase = dataObject.name + ".md";
 	var mustacheFNBase = dataObject.name + ".mustache";
+	var jsonFNBase = dataObject.name + ".json";
 
 	var targetFileMD = path.join(targetPath, mdFNBase);
 	var targetFileMustache = path.join(targetPath, mustacheFNBase);
 
+	var targetFileJSON = path.join(targetPath, jsonFNBase);
+	r.fnjson = targetFileJSON;
 
 
 	r.fnmd = targetFileMD;
@@ -454,14 +479,46 @@ function parseCommandLineArguments(args) {
 		throw nameParamInfo;
 	}
 
+	try {
+		r.jsonflag = args.json ? true : false; //@s Do we want to generate JSON Data
+		if (r.jsonflag) {
+			//@a Catch the JSON data
+			r.json = args.json;
+			if (r.json == "true") r.json = "{}";
+			if (r.json == true) r.json = "{}";
 
+		}
 
+	} catch (error) {
+
+	}
+
+	if (!r.jsonflag) //@s Already defined
+	try {
+		r.jsonflag = args.jsonvue ? true : false; //@s Do we want to generate JSON Data
+		if (r.jsonflag) {
+			//@a Catch the JSON data
+			r.json = args.jsonvue;
+			if (r.json == "true") r.json = `{
+	"hasvueapp": true
+}`;
+			if (r.json == true) r.json =  `{
+	"hasvueapp": true
+}`;
+
+		}
+
+	} catch (error) {
+
+	}
 
 
 
 
 	r.title = args.t;
 	r.description = args.d;
+	if (args.innerhtml) r.customizedHtml = true; //@s Flag telling our template to render differently
+
 	r.innerhtml = args.innerhtml ? args.innerhtml : placeholders.innerhtml; //@s We will replace the inner html  Place holder or the default that is in the package.json
 
 	//state

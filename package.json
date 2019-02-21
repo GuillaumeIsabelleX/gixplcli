@@ -1,6 +1,6 @@
 {
   "name": "gixplcli",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Simple PatternLab pattern creator from a command line you run at the root of your pattern package",
   "main": "gixplcli.js",
   "scripts": {
@@ -67,6 +67,7 @@
   "dependencies": {
     "gulp": "^4.0.0",
     "gulp-git": "^2.8.1",
+    "hjson": "^3.1.2",
     "minimist": "^1.2.0",
     "mustache": "^3.0.1",
     "unescape": "^1.0.1"

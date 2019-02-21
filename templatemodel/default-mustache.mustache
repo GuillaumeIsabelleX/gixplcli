@@ -1,15 +1,19 @@
-<!--@ns {{name}} {{title}}-->
+
 <!--@v {{goal}} -->
 {{#actions}}
 <!--@a See the MD file for more actions -->
 {{/actions}}
 
-<!--@cr {{cr}} -->
- {{#id}}<div id="{{id}}">{{/id}}
-{{^id}}<div>{{/id}}
+<!-- {{cr}} -->
+{{^customizedHtml}}
 
+	{{#id}}<div id="{{id}}">{{/id}}
+	{{^id}}<div>{{/id}}
+
+{{/customizedHtml}}
 
 {{innerhtml}}
 
-
-</div>
+{{^customizedHtml}}
+	</div>
+{{/customizedHtml}}
