@@ -5,6 +5,9 @@
 * Added --lang (js|php|...) default js NOT YET SUPPORTED
 * Added --scss
  
+## [0.1.11] (2019-02-21)
+### changed
+* Added flag --jsoneditor for a default editor type with data
 
 ## [0.1.11] (2019-02-21)
 ### changed

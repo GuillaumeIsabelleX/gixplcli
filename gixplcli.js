@@ -7,6 +7,7 @@ var helpContent = `
 	[--id]\tid\t Identify the wrapper by an id
 	[--state]\t\tInitial state (default inprogress)
 	[--innerhtml]\t"htmlcode"\t
+	--jsoneditor for a default editor type with data
 	FLAGS
 	
 	--scss
@@ -488,30 +489,57 @@ function parseCommandLineArguments(args) {
 			if (r.json == true) r.json = "{}";
 
 		}
-
-	} catch (error) {
-
-	}
+	} catch (error) { }
 
 	if (!r.jsonflag) //@s Already defined
-	try {
-		r.jsonflag = args.jsonvue ? true : false; //@s Do we want to generate JSON Data
-		if (r.jsonflag) {
-			//@a Catch the JSON data
-			r.json = args.jsonvue;
-			if (r.json == "true") r.json = `{
-	"hasvueapp": true
-}`;
-			if (r.json == true) r.json =  `{
-	"hasvueapp": true
-}`;
+		try {
+			r.jsonflag = args.jsonvue ? true : false; //@s Do we want to generate JSON Data
+			if (r.jsonflag) {
+				//@a Catch the JSON data
+				r.json = args.jsonvue;
+				if (r.json == "true") r.json = `{
+					"hasvueapp": true
+				}`;
+				if (r.json == true) r.json = `{
+					"hasvueapp": true
+				}`;
 
+			}
+		} catch (error) { }
+
+	if (!r.jsonflag) //@s Already defined
+		try {
+			var defaultJSONData = `{
+				
+				
+	"hasediting": {
+		"editor": {
+			"id": "editor"
+		},
+		"active": true,
+		"type": {
+			"note": "One flag true",
+			"isclassic": true,
+			"isballoon": false,
+			"isinline": false
 		}
-
-	} catch (error) {
-
+	},
+	"why": "@bug THE VUE IS NOT YET WORKING",
+	"hasvueapp": false,
+	"vue": {
+		"vmodel": "MY_VMODEL",
+		"placeholder": "DEFAULT_TEXT_FOR_PLACEHOLDER"
 	}
+}`;
+			r.jsonflag = args.jsoneditor ? true : false; //@s Do we want to generate JSON Data
+			if (r.jsonflag) {
+				//@a Catch the JSON data
+				r.json = args.jsoneditor;
+				if (r.json == "true" || r.json == true) r.json = defaultJSONData;
 
+
+			}
+		} catch (error) { }
 
 
 
